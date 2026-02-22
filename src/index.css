@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* === 1-1. Color Palette (Trendy SNS Style v2.0) === */
+
+    /* Primary & Secondary */
+    --color-primary: 0 0% 98%; /* #FAFAFA - App Background (Off-white) */
+    --color-primary-light: 0 0% 100%; /* #FFFFFF - Card/Input Background */
+    --color-primary-surface: 210 20% 98%; /* #F8FAFC - Modal/Drawer Background */
+
+    --color-accent-blue: 199 89% 48%; /* #0EA5E9 - Sky Blue Primary */
+    --color-accent-orange: 43 96% 56%; /* #FBBF24 - Vivid Yellow CTA */
+    --color-accent-neon: 200 98% 39%; /* #0284C7 - Hover Blue */
+
+    /* Semantic */
+    --color-success: 142 71% 45%; /* #22C55E */
+    --color-warning: 45 93% 47%; /* #EAB308 */
+    --color-error: 348 83% 47%; /* #EF4444 */
+    --color-info: 199 89% 48%; /* #0EA5E9 */
+    --color-disabled: 215 16% 47%; /* #64748B */
+
+    /* Text */
+    --color-text-primary: 222 47% 11%; /* #0F172A */
+    --color-text-secondary: 215 16% 47%; /* #64748B */
+    --color-text-tertiary: 215 20% 65%; /* #94A3B8 */
+    --color-text-inverse: 0 0% 100%; /* #FFFFFF */
+    --color-white: 0 0% 100%; /* #FFFFFF */
+
+    /* Border & Divider */
+    --color-border: 214 32% 91%; /* #E2E8F0 */
+    --color-border-focus: 199 89% 48%; /* #0EA5E9 */
+    --color-divider: 214 32% 91%; /* rgba(0,0,0,0.08) */
+
+    /* === Shadcn/UI Compatibility Mapping === */
+    --background: var(--color-primary);
+    --foreground: var(--color-text-primary);
+
+    --card: var(--color-primary-light);
+    --card-foreground: var(--color-text-primary);
+
+    --popover: var(--color-primary-surface);
+    --popover-foreground: var(--color-text-primary);
+
+    --primary: var(--color-accent-blue);
+    --primary-foreground: var(--color-text-inverse);
+
+    --secondary: var(--color-accent-orange);
+    --secondary-foreground: var(--color-white);
+
+    --muted: var(--color-primary-surface);
+    --muted-foreground: var(--color-text-secondary);
+
+    --destructive: var(--color-error);
+    --destructive-foreground: var(--color-white);
+
+    --border: var(--color-border);
+    --input: var(--color-primary-light);
+    --ring: var(--color-accent-blue);
+
+    --radius: 0.75rem; /* 12px default */
+
+    /* === 1-3. Spacing Tokens === */
+    --space-2xs: 0.125rem; /* 2px */
+    --space-xs: 0.25rem; /* 4px */
+    --space-sm: 0.5rem; /* 8px */
+    --space-md: 0.75rem; /* 12px */
+    --space-base: 1rem; /* 16px */
+    --space-lg: 1.25rem; /* 20px */
+    --space-xl: 1.5rem; /* 24px */
+    --space-2xl: 2rem; /* 32px */
+    --space-3xl: 2.5rem; /* 40px */
+    --space-4xl: 3rem; /* 48px */
+    --space-5xl: 4rem; /* 64px */
+
+    /* === Mobile-First Fluid Typography (Clamp) === */
+    --text-fluid-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --text-fluid-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --text-fluid-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    --text-fluid-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+    --text-fluid-xl: clamp(1.25rem, 1rem + 1.25vw, 1.5rem);
+    --text-fluid-2xl: clamp(1.5rem, 1.1rem + 2vw, 2rem);
+    --text-fluid-3xl: clamp(1.875rem, 1.2rem + 3.375vw, 2.5rem);
+    --text-fluid-4xl: clamp(2.25rem, 1rem + 6.25vw, 3.5rem);
+    --text-fluid-5xl: clamp(3rem, 1rem + 10vw, 5rem);
+
+    /* === Mobile-First Fluid Spacing (Clamp) === */
+    --spacing-fluid-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+    --spacing-fluid-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+    --spacing-fluid-md: clamp(1rem, 0.75rem + 1.25vw, 2rem);
+    --spacing-fluid-lg: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+    --spacing-fluid-xl: clamp(2rem, 1.25rem + 3.75vw, 4rem);
+    --spacing-fluid-2xl: clamp(3rem, 1.5rem + 7.5vw, 6rem);
+    --spacing-fluid-section: clamp(4rem, 2rem + 10vw, 8rem);
+
+    /* === 1-4. Border Radius === */
+    --radius-none: 0;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-base: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+
+    /* === 1-5. Shadows (Lighter & Flatter) === */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-glow-blue: none; /* Removed for flat design */
+    --shadow-glow-orange: none; /* Removed for flat design */
+
+    /* === 1-6. Motion === */
+    --motion-instant: 0ms;
+    --motion-fast: 100ms;
+    --motion-base: 200ms;
+    --motion-moderate: 300ms;
+    --motion-slow: 400ms;
+    --motion-deliberate: 600ms;
+    --motion-ar-item: 800ms;
+
+    /* === 1-7. Z-Index === */
+    --z-base: 0;
+    --z-raised: 1;
+    --z-dropdown: 10;
+    --z-sticky: 20;
+    --z-drawer: 30;
+    --z-modal: 40;
+    --z-overlay: 50;
+    --z-toast: 60;
+    --z-tooltip: 70;
+    --z-ar-hud: 100;
+    --z-max: 9999;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      "Pretendard Variable",
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-h1 {
+    @apply text-[32px] font-bold leading-[1.25] tracking-[-0.02em];
+  }
+  .text-h2 {
+    @apply text-[24px] font-bold leading-[1.33] tracking-[-0.01em];
+  }
+  .text-h3 {
+    @apply text-[20px] font-semibold leading-[1.4] tracking-normal;
+  }
+  .text-body-lg {
+    @apply text-[18px] font-normal leading-[1.56] tracking-normal;
+  }
+  .text-body {
+    @apply text-[16px] font-normal leading-[1.5] tracking-normal;
+  }
+  .text-body-sm {
+    @apply text-[14px] font-normal leading-[1.43] tracking-[0.01em];
+  }
+  .text-caption {
+    @apply text-[12px] font-normal leading-[1.33] tracking-[0.02em];
+  }
+  .text-overline {
+    @apply text-[11px] font-semibold leading-[1.45] tracking-[0.08em] uppercase;
+  }
+
+  .bg-primary-surface {
+    background-color: hsl(var(--color-primary-surface));
+  }
+
+  /* Safe Area Utilities for Notched Devices */
+  .safe-area-pt {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-area-pl {
+    padding-left: env(safe-area-inset-left);
+  }
+  .safe-area-pr {
+    padding-right: env(safe-area-inset-right);
+  }
+  .safe-area-p {
+    padding-top: env(safe-area-inset-top);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+  }
+  .pb-safe {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+  }
+}

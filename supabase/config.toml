@@ -1,0 +1,4 @@
+project_id = "qctiftwsdnvuhhshuhej"
+
+[functions.toss-confirm-payment]
+verify_jwt = false
