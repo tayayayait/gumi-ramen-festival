@@ -1,4 +1,4 @@
-﻿import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useOrderNotifications } from "@/hooks/useOrderNotifications";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
@@ -91,6 +91,8 @@ export default function OrderStatusPage() {
           const isCurrent = idx === currentStepIdx;
           const StepIcon = step.icon;
 
+          const isCompleted = step.key === "completed" && isCurrent;
+
           return (
             <div key={step.key} className="flex gap-4 items-start relative">
               {idx < STATUS_STEPS.length - 1 && (
@@ -102,14 +104,18 @@ export default function OrderStatusPage() {
               )}
               <div
                 className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center border-2 transition-all ${
-                  isCurrent
+                  isCompleted
+                    ? "bg-accent-blue border-accent-blue"
+                    : isCurrent
                     ? "bg-accent-blue/10 border-accent-blue shadow-sm"
                     : isActive
                     ? "bg-accent-blue border-accent-blue"
                     : "bg-gray-50 border-gray-200"
                 }`}
               >
-                {isCurrent ? (
+                {isCompleted ? (
+                  <StepIcon className="w-4 h-4 text-white" />
+                ) : isCurrent ? (
                   <Loader2 className="w-4 h-4 text-accent-blue animate-spin" />
                 ) : (
                   <StepIcon className={`w-4 h-4 ${isActive ? "text-white" : "text-gray-400"}`} />
