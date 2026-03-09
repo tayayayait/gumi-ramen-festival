@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { usePickupOrders } from "@/hooks/usePickupOrders";
-import { TrendingUp, Coins, ShoppingBag, Crown } from "lucide-react";
+import { Coins, ShoppingBag, Crown, PackageOpen } from "lucide-react";
 import { useMemo } from "react";
 
 export default function AdminDashboard() {
@@ -97,9 +97,9 @@ export default function AdminDashboard() {
            </CardHeader>
            <CardContent>
                <div className="text-2xl md:text-3xl font-black text-foreground">{stats.totalSales.toLocaleString()}원</div>
-              <p className="text-xs text-success flex items-center font-bold mt-1">
-                <TrendingUp className="w-3 h-3 mr-1" />+20.1% 어제 대비
-              </p>
+               <p className="text-xs text-muted-foreground mt-1">
+                 실시간 집계
+               </p>
            </CardContent>
         </Card>
         
@@ -110,9 +110,9 @@ export default function AdminDashboard() {
            </CardHeader>
            <CardContent>
                <div className="text-2xl md:text-3xl font-black text-foreground">{stats.orderCount}</div>
-              <p className="text-xs text-success flex items-center font-bold mt-1">
-                <TrendingUp className="w-3 h-3 mr-1" />+12% 어제 대비
-              </p>
+               <p className="text-xs text-muted-foreground mt-1">
+                 실시간 집계
+               </p>
            </CardContent>
         </Card>
 
@@ -176,11 +176,27 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent>
             <div className="h-[300px] w-full mt-4">
+              {topMenuData.length === 0 ? (
+                <div className="flex flex-col items-center justify-center h-full text-muted-foreground">
+                  <PackageOpen className="w-12 h-12 mb-3 opacity-40" />
+                  <p className="text-sm font-medium">아직 주문 데이터가 없습니다</p>
+                  <p className="text-xs mt-1">주문이 들어오면 자동으로 업데이트됩니다</p>
+                </div>
+              ) : (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={topMenuData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
                   <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748B', fontWeight: 600 }} dy={10} />
-                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748B' }} tickFormatter={(value) => `${value}개`} dx={-10} width={40} />
+                  <YAxis
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 12, fill: '#64748B' }}
+                    tickFormatter={(value) => `${value}개`}
+                    dx={-10}
+                    width={50}
+                    allowDecimals={false}
+                    domain={[0, 'auto']}
+                  />
                   <RechartsTooltip 
                     contentStyle={{ borderRadius: '16px', border: '1px solid #E2E8F0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', fontWeight: 'bold' }}
                     cursor={{ fill: '#F1F5F9' }}
@@ -194,6 +210,7 @@ export default function AdminDashboard() {
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
+              )}
             </div>
           </CardContent>
         </Card>
